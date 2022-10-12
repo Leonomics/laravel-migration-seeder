@@ -63,7 +63,25 @@
             }
         </style>
     </head>
-    <body>
 
+    <?php
+        $today = date("Y-m-d");
+    ?>
+
+    <body>
+        <h1>Trains</h1>
+    <ul>
+        @foreach ($trains as $train)
+        @if($train->orario_di_partenza->format('Y-m-d') == $today)
+        <li>
+            Stazione di partenza: {{$train->stazione_di_partenza}}<br>
+            Stazione di arrivo: {{$train->stazione_di_arrivo}}<br>
+            Orario di partenza: {{$train->orario_di_partenza}}<br>
+            Orario di arrivo: {{$train->orario_di_arrivo}}<br>
+            Codice treno: {{$train->codice_treno}}
+        </li>
+        @endif
+        @endforeach
+    </ul>
     </body>
 </html>
